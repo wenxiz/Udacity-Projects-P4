@@ -73,7 +73,7 @@ var projects = {
 		"dates": "December 2016",
 		"description": "Interface design of application that takes a college graduate student's  income and payout data to help the user identify their spending patterns, monitor the rate at which they are spending their income and encourage them to save.",
 		"images": [
-		"images/fry.jpg", "images/197x148.gif"
+		"images/Menu.png", "images/Main.png", "images/Add.png", "images/History.png"
 		]
 	},
 	{
@@ -81,7 +81,7 @@ var projects = {
 		"dates": "July 2017",
 		"description": "Using HTML, CSS, JavaScript, Json and jQuery to build an electronic resume.",
 		"images": [
-		"images/fry.jpg", "images/197x148.gif"
+		"images/resume1.jpg", "images/resume2.jpg", "images/resume3.jpg", "images/resume4.jpg"
 		]
 	}
 	]
@@ -158,13 +158,14 @@ projects.display = function() {
 		$("#projects").append(HTMLprojectStart);
 		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", element.title),
 			formattedDates= HTMLprojectDates.replace("%data%", element.dates),
-			formattedDescription = HTMLprojectDescription.replace("%data%", element.description)
+			formattedDescription = HTMLprojectDescription.replace("%data%", element.description);
+			$(".project-entry:last").append(formattedProjectTitle, formattedDates, formattedDescription, HTMLimageStart);
 
-		projects.projects[images].images.forEach(function (element) {
-			var formattedProjectImage = HTMLprojectImage.replace("%data%", element);
-		})
+			element.images.forEach(function(i){
 
-		$(".project-entry:last").append(formattedProjectTitle, formattedDates, formattedDescription, formattedProjectImage);
+				formattedImages = HTMLprojectImage.replace("%data%", i);
+				$(".row:last").append(formattedImages);
+			});
 	});
 }
 
@@ -183,7 +184,7 @@ education.display();
 projects.display();
 
 $("#main").append(internationalizeButton);
-// $("mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);
 
 
 
