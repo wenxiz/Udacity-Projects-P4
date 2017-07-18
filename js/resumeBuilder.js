@@ -5,7 +5,7 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name": "Wenxi Zhou",
 	"role": "Web Developer",
-	"contact": 
+	"contacts": 
 	{
 		"mobile": "202-413-7280",
 		"email": "vic.zwx1990@gmail.com",
@@ -16,7 +16,7 @@ var bio = {
 	"HTML", "CSS", "JavaScript", "jQuery", "Git", "Gulp", "Bootstrap"
 	],
 	"welcomeMessage": "This is it!",
-	"bioPic": "images/fry.jpg"
+	"biopic": "images/fry.jpg"
 }
 
 var education = {
@@ -25,16 +25,16 @@ var education = {
 		"name": "the George Washington University",
 		"location": "Washington, D.C.",
 		"degree": "Masters",
-		"major": ["Computer Science"],
-		"dates": 2017,
+		"majors": ["Computer Science"],
+		"dates": "2017",
 		"url": "https://www.gwu.edu"
 	},
 	{
 		"name": "Yanching Institute of Technology",
 		"location": "Hebei, China",
 		"degree": "Bachelor",
-		"major": ["Chemical Engineering"],
-		"dates": 2013,
+		"majors": ["Chemical Engineering"],
+		"dates": "2013",
 		"url": "http://www.yit.edu.cn/"	
 	}
 	],
@@ -42,7 +42,7 @@ var education = {
 	{
 		"title": "Front End Web Developer",
 		"school": "Udacity",
-		"dates": 2017,
+		"dates": "2017",
 		"url": "http://cn.udacity.com/course/front-end-web-developer-nanodegree--nd001-cn-basic"
 	}
 	]
@@ -90,13 +90,13 @@ var projects = {
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name),
 		formattedRole = HTMLheaderRole.replace("%data%", bio.role),
-		formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic),
+		formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic),
 		formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-	var formattedMobile = HTMLmobile.replace("%data%", bio.contact.mobile),
-		formattedEmail = HTMLemail.replace("%data%", bio.contact.email),
-		formattedGithub = HTMLgithub.replace("%data%", bio.contact.github),
-		formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile),
+		formattedEmail = HTMLemail.replace("%data%", bio.contacts.email),
+		formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github),
+		formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
@@ -107,10 +107,10 @@ bio.display = function() {
 
 	$("#header").append(HTMLskillsStart);	
 	
-	for (skill in bio.skills) {
-		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
+	bio.skills.forEach(function(element) {
+		var formattedSkills = HTMLskills.replace("%data%", element);
 		$("#skills").append(formattedSkills);
-	}
+	});
 }
 
 work.display = function() {
@@ -135,7 +135,7 @@ education.display = function() {
 			formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree),
 			formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates),
 			formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location),
-			formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major)
+			formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors)
 
 		$(".education-entry:last").append(formattedSchool, formattedDegree, formattedDates, formattedLocation, formattedMajor);
 	}
