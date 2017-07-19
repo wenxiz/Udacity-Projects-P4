@@ -1,3 +1,4 @@
+'use strict';
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
@@ -71,7 +72,7 @@ var projects = {
 	{
 		"title": "Alipay",
 		"dates": "December 2016",
-		"description": "Interface design of application that takes a college graduate student's  income and payout data to help the user identify their spending patterns, monitor the rate at which they are spending their income and encourage them to save.",
+		"description": "Interface design of application that takes a college graduate student's income and payout data to help the user identify their spending patterns, monitor the rate at which they are spending their income and encourage them to save.",
 		"images": [
 		"images/Menu.png", "images/Main.png", "images/Add.png", "images/History.png"
 		]
@@ -86,7 +87,7 @@ var projects = {
 	}
 	]
 }
-
+//display bio information
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name),
 		formattedRole = HTMLheaderRole.replace("%data%", bio.role),
@@ -113,6 +114,7 @@ bio.display = function() {
 	});
 }
 
+//display work information
 work.display = function() {
 	for (var i = 0; i < work.jobs.length; i ++) {
 		$("#workExperience").append(HTMLworkStart);
@@ -127,6 +129,7 @@ work.display = function() {
 	
 }
 
+//display education information
 education.display = function() {
 	for (var i = 0; i < education.schools.length; i ++) {
 		$("#education").append(HTMLschoolStart); 
@@ -153,6 +156,7 @@ education.display = function() {
 	}
 }
 
+//display projects information
 projects.display = function() {
 	projects.projects.forEach(function(element){
 		$("#projects").append(HTMLprojectStart);
@@ -183,7 +187,10 @@ work.display();
 education.display();
 projects.display();
 
+//add internationalize Button to page
 $("#main").append(internationalizeButton);
+
+//add map into page
 $("#mapDiv").append(googleMap);
 
 
