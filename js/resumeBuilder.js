@@ -167,7 +167,7 @@ projects.display = function() {
 
 			element.images.forEach(function(i){
 
-				formattedImages = HTMLprojectImage.replace("%data%", i);
+				var formattedImages = HTMLprojectImage.replace("%data%", i);
 				$(".row:last").append(formattedImages);
 			});
 	});
